@@ -1,0 +1,13 @@
+---------- Date: 2019-03-27 12:06:41 ~ IP : 109.86.200.203 ----------
+REQUEST URI : /edit/index.php?route=catalog/product&amp;token=d56b7fe0cd307f43ee0dbc9f182d9d8b
+MOD DETAILS:
+   modFile   : /home/primoc02/peretz.top/mdc/vqmod/xml/admin_theme_base5builder_impulsepro_1.5.5-above.xml
+   id        : Admin Theme - Base 5 Builder - ImpulsePro
+   version   : 0.9.4
+   vqmver    : 2.0
+   author    : Niyi Sodipe - Base5Builder.com
+SEARCH NOT FOUND (ABORTING MOD): <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
+
+----------------------------------------------------------------------
+
+

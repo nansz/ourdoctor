@@ -1,0 +1,618 @@
+# 1.To use URL Alias you need to be running apache with mod_rewrite enabled. 
+php_flag display_errors on
+# 2. In your opencart directory rename htaccess.txt to .htaccess.
+
+# For any support issues please visit: http://www.opencart.com
+
+Options +SymLinksIfOwnerMatch
+
+# Prevent Directoy listing 
+Options -Indexes
+
+# Prevent Direct Access to files
+<FilesMatch "\.(tpl|ini|log)">
+ Order deny,allow
+ Deny from all
+</FilesMatch>
+
+
+
+
+
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^mdclux\.com\.ua$ [NC]
+RewriteRule ^(.*)$ http://www.mdclux.com.ua/$1 [R=301,L]
+
+# SEO URL Settings
+
+# If your opencart installation does not run on the main web folder make sure you folder it does run in ie. / becomes /shop/ 
+
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} ^/public.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/science/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/science/sdfgfhgfd-dsffgfdsx-vcbgfdrsdfbgnh-gfdscvbgres-dfghgfdsdgbhg-fdsdvbn/$
+RewriteRule ^.*$ http://www.mdclux.com.ua/science/sovremennoe-lechenie-vertebrogennoi-cervikobrahialii-putem-lokalnoi-inekcionnoi-terapii-pod-kt-kontrolem/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public_med.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/news.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/news/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/akcii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/sale/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/agreement.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/technology.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/personal.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/staff/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/ortopedia.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/orthopedics/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/terminology.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/stoimost-uslug-kompjuternoj-tomografii-v-kharkove$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/opisanie-kt-issledovaniy$
+RewriteRule ^.*$ http://www.mdclux.com.ua/description-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/terminy-tomografii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/uslugi-kompjuternoj-tomografii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/description-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/ort_terminology.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/stoimost-uslug-vracha-ortopeda-blokada-pozvonochnika-kharkov$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-orthopedics/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/stoimost-uslug-kompjuternoj-tomografii-v-kharkove$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/video$
+RewriteRule ^.*$ http://www.mdclux.com.ua/video/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/contacts.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/contacts/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sagittalnaja-ploskost$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/sagittalnaja-ploskost/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/frontalnaja-ploskost$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/terminy-tomography/frontalnaja-ploskost/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/aksialnaja$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/aksialnaja/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/multiplanarnaja-rekonstrukcija-mnogoploskostnaja-rekonstrukcija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/multiplanarnaja-rekonstrukcija-mnogoploskostnaja-rekonstrukcija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/3d$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/3d/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/artrografija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/artrografija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/mielografija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/mielografija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/kontrast$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-tomography/kontrast/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/anestetik$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/anestetik/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/bol-v-spine$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/bol-v-spine/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/vertebralnobaziljarnyj-sindrom$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/vertebralnobaziljarnyj-sindrom/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/gljukokortikosteroidy$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/gljukokortikosteroidy/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/gryzha-diska$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/gryzha-diska/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/dugootroschatyj-sustav$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/dugootroschatyj-sustav/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/istinnaja-nevralgija-arnolda$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/istinnaja-nevralgija-arnolda/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/lechebnye-blokady$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/lechebnye-blokady/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/manualnaja-terapija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/manualnaja-terapija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/miotonicheskie-reakcii-paravertebralnyh-myshc$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/miotonicheskie-reakcii-paravertebralnyh-myshc/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/nejrokompressionnyj-sindrom-grudnogo-vyhoda$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/nejrokompressionnyj-sindrom-grudnogo-vyhoda/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/osteohondroz$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/osteohondroz/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/plechelopatochnyj-periartroz$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/plechelopatochnyj-periartroz/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/podkljuchichnaja-arterija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/podkljuchichnaja-arterija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/pozvonochnik$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/pozvonochnik/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/postforaminalnyj-radikulit$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/postforaminalnyj-radikulit/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/radikulopatija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/radikulopatija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sindrom-zadnego-shejnogo-simpaticheskogo-spletenija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/sindrom-zadnego-shejnogo-simpaticheskogo-spletenija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sindrom-zudeka$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/sindrom-zudeka/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sindrom-pozvonochnoj-arterii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/sindrom-pozvonochnoj-arterii/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/skalenus-sindrom$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/skalenus-sindrom/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/spiralnyj-kompjuternyj-tomograf$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/spiralnyj-kompjuternyj-tomograf/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/spondiloartroz$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/spondiloartroz/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/trakcionnaja-terapija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/trakcionnaja-terapija/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/foraminalnyj-radikulit$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/foraminalnyj-radikulit/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/foraminalnyj-stenoz$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/foraminalnyj-stenoz/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/jepiduralnoe-prostranstvo$
+RewriteRule ^.*$ http://www.mdclux.com.ua/terminy-orthopedics/jepiduralnoe-prostranstvo/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/contact$
+RewriteRule ^.*$ http://www.mdclux.com.ua/contacts/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/224$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-brushoy-polosti-zabrushinogo-prostranstva-i-organov-malogotaza.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/kt-brushoy-polosti-zabrushinogo-prostranstva-i-organov-malogotaza-1/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/pryvatnyj-medychnyj-proekt-v-ukraine.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-grudnoy-kletki.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/kt-grudnoy-kletki-1/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/prajs-list$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/galery.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-pridatochnyh-pazuh-nosa.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/kt-pridatochnyh-pazuh-nosa-2/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/SKT2.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/voprosy-i-otvety-v-oblasti-tomografii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-SHOP-POP.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/SKT.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/ocinka-stanu-verhnih-kosyh-myaziv-u-hvoryh-na-kosookist-za-dannymy-RKT.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-angiografiya.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/akcija-nizkodozovaja-kompjuternaja-tomografija-legkih$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sertificat_o_vicshey_categorii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/efort2016_poster_session$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/metodichka.pdf$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/vipusk-2.pdf$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/diagnostika-boli-v-spine$
+RewriteRule ^.*$ http://www.mdclux.com.ua/orthopedics/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/23$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/vozmognosti-SKT-v-diagnostike-zabolevaniy-orbity.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/posterni-doklady$
+RewriteRule ^.*$ http://www.mdclux.com.ua/science/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/ukraine_in_emsos2017$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/emsos2017$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/ukrainians_in_emsos2016$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/253$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-mielografiya.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/price-tomography/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/ukraine-in-kongress-obshestva-kostno-mishechnih-opuholey$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/golovnaya_bol_distoniya.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/kakie-tkani-i-organy-luchshe-vidny-na-kt-i-kakie-na-mrt$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/visualisation_v_klinike$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/lechenie_bolevih_sindromov_poyasnice.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/general/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/28/feed$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/vi-megdunarodniy-kongress$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/opredelenie-prichiny-golovnoj-boli-i-vertebrobaziljarnoj-nedostatochnosti$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/efort_2016$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/lechenie_zabolevaniy_sheynogo_otdela_pozvonochnika$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/akcija-tomografija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/15-aja-vstrecha-vsemirnoj-federacii-nejrohirurgic-heskih-obshhestv$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/issledovania-v-ortopedii-travmatologii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/voprosy-i-otvety-v-oblasti-ortopedii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/isolts_2017$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/register$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/emsos_2016_posternaya_sessia$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/230$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/28$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/emsos_2016$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/2/feed$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/ocenka_sost_mishc.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/kakoj-rezultat-ozhidat-ot-lechebno-diagnosticheskoj-blokady$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sertificat-dstu-iso-9001-2009$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/akcija-ortopedija$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/aaos_2017$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/golovnaya_bol_nedostatochnost.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/luchevaya_diagnostika_onkopatalogii.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/login?destination=node/93%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/login?destination=node/253%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/register?destination=node/253%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/kt-obsledovanii-deformacii-stopy$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/5/feed$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/28?page=2$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/user/register?destination=node/93%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/ocenka-paravertibral-magkix-tkaniv$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/ortopedic-forum-aaos$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/user/register?destination=node/166%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/5$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/5/feed$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/5/feed$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/user$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/user/password$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/lechenie_vertebrogennoj_cervikobrahialii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/public/vvedenie_steroidov_pri_grige.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/public/ocenka_paravertibral_magkix_tkaniv.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/klinicheskiye-sluchai$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/28?page=1$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/user/register?destination=node/15%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/news_details3$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/25$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/bionic-protez$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/kongress-obshestva-kostno-mishechnih-opuholey$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/user/login?destination=node/166%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/public/rol-sovremennyh-metodov-issledovaniya-v-diagnostike-gliom-zritelnogo-nerva.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/sp%D1%96ralna-komputerno-tomograf%D1%96chna-ang%D1%96ograf%D1%96ja-v-d%D1%96agnostic%D1%96-k%D1%96stkovih-puhlin-k%D1%96nc%D1%96vok$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/public/rol-formy-i-orientacii-sustavnyh-otrostkov-v-razvitii-lateralnogo-degenerativnogo-artrogennogo-stenoza-pozvonochnogo-kanala-poyasnichnogo-otdela.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/emsos2017_poster$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/news_details5.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L] 
+
+RewriteCond %{REQUEST_URI} ^/img6.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/5$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/Ukraine_in_isols2017$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-golovnogo-mozga.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/komgress-assosiacia-po-izucheniu-boli$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/vozmozhnosti-angio-komput%D1%83%D0%B5%D1%80noj-tomografii.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/vvedenie_steroidov_pri_grige$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/rol-formy-i-orientacii-sustavnyh-otrostkov-v-razvitii-lateralnogo-degenerativnogo$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/kak-dolgo-mozhet-sohranjatsja-zhelaemyj-rezultat-posle-provedenija-lechebno-diagnosticheskoj-blokady$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/terminy-orthopedics/anestetik/$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/vmist_riznix_tkanin_y_mazax$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/terminy-tomography/3d/$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/general/%D0%BB%D0%B5%D1%89-okazuvaet-medicinskuy-pomosh-na-borty-samoleta/$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} /node/251$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/service/KT-golovnogo-mozga.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sites/all/modules/lightbox2/js/lightbox.js?1476366784$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/isols2017$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/obedinennyj-kongress-isols-msts$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/service/KT-SHOP-POP.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/90$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/public/SKT.pdf$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/vozmozhnosti-angio-komput%D1%83%D0%B5%D1%80noj-tomografii$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/login?destination=node/251%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/265$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/forum_ortoped_travmatolog$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/service/KT-shei.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/register?destination=node/265%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/uslugi-ortopeda$
+RewriteRule ^.*$ http://www.mdclux.com.ua/orthopedics/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/ebjis_2016$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/kakie-preparaty-ispolzujut-pri-provedenii-lechebno-diagnosticheskih-blokad$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/6$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/pochemu-v-raznyh-klinikah-raznye-ceny-na-kt-issledovanie$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/taxonomy/term/28/personal.html$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/akciya_deformaciya_palcev_stop$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/node/148$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/aaos_2017_open$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/user/register?destination=node/95%23comment-form$
+RewriteRule ^.*$ http://www.mdclux.com.ua/? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/mdcdoctor/$
+RewriteRule ^.*$ http://www.mdclux.com.ua/staff/? [R=301,L]
+
+ 
+ 
+
+
+
+
+RewriteRule ^sitemap.xml$ index.php?route=feed/google_sitemap [L]
+RewriteRule ^googlebase.xml$ index.php?route=feed/google_base [L]
+RewriteRule ^download/(.*) /index.php?route=error/not_found [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
+
+
+
+
+
+
+
+
+
+### Additional Settings that may need to be enabled for some servers 
+### Uncomment the commands by removing the # sign in front of it.
+### If you get an "Internal Server Error 500" after enabling any of the following settings, restore the # as this means your host doesn't allow that.
+
+# 1. If your cart only allows you to add one item at a time, it is possible register_globals is on. This may work to disable it:
+# php_flag register_globals off
+
+# 2. If your cart has magic quotes enabled, This may work to disable it:
+# php_flag magic_quotes_gpc Off
+
+# 3. Set max upload file size. Most hosts will limit this and not allow it to be overridden but you can try
+# php_value upload_max_filesize 999M
+
+# 4. set max post size. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value post_max_size 999M
+
+# 5. set max time script can take. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value max_execution_time 200
+
+# 6. set max time for input to be recieved. Uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value max_input_time 200
+
+# 7. disable open_basedir limitations
+# php_admin_value open_basedir none

@@ -1,0 +1,84 @@
+---------- Date: 2019-02-26 09:54:43 ~ IP : 109.86.200.203 ----------
+REQUEST URI : /vacancy/
+MOD DETAILS:
+   modFile   : /home/primoc02/peretz.top/mdc/vqmod/xml/admin_theme_base5builder_impulsepro_1.5.5-above.xml
+   id        : Admin Theme - Base 5 Builder - ImpulsePro
+   version   : 0.9.4
+   vqmver    : 2.0
+   author    : Niyi Sodipe - Base5Builder.com
+Could not resolve path for [edit/language/english/common/home.php] (SKIPPED)
+Could not resolve path for [edit/view/template/tool/error_log.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/catalog/product_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/common/filemanager.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/module/featured.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/order_info.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/affiliate_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/contact.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/coupon_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/customer_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/order_info.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/return_info.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/voucher_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/order_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/order_list.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/return_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/return_list.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/shipping/weight.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/return_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/customer_list.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/total/handling.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/total/low_order_fee.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/report/product_purchased.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/report/customer_order.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/report/customer_reward.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/report/affiliate_commission.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/report/sale_tax.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/report/sale_shipping.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/catalog/category_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/catalog/attribute_list.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/catalog/attribute_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/catalog/option_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/catalog/manufacturer_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/extension/module.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/extension/shipping.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/extension/payment.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/extension/total.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/extension/feed.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/affiliate_list.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/voucher_theme_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/contact.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/setting/store_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/setting/setting.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/tool/error_log.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/tool/backup.tpl] (SKIPPED)
+
+MOD DETAILS:
+   modFile   : /home/primoc02/peretz.top/mdc/vqmod/xml/export.xml
+   id        : Export/Import Tool - OpenCart 1.5.3.x core file modifications
+   version   : 1.5.4.x
+   vqmver    : 1.1.0
+   author    : JNeuhoff
+Could not resolve path for [edit/language/english/common/header.php] (SKIPPED)
+Could not resolve path for [edit/language/russian/common/header.php] (SKIPPED)
+Could not resolve path for [edit/view/template/common/header.tpl] (SKIPPED)
+
+MOD DETAILS:
+   modFile   : /home/primoc02/peretz.top/mdc/vqmod/xml/simple_custom_data.xml
+   id        : Simple Custom Data
+   version   : 1.0.0
+   vqmver    : 2.1
+   author    : deeman
+Could not resolve path for [edit/view/template/sale/customer_form.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/order_info.tpl] (SKIPPED)
+Could not resolve path for [edit/view/template/sale/order_form.tpl] (SKIPPED)
+
+MOD DETAILS:
+   modFile   : /home/primoc02/peretz.top/mdc/vqmod/xml/testimonials-1-5-x.xml
+   id        : Customer Testimonial Package - OpenCart 1.5.x core file modifications
+   version   : 1.5.x
+   vqmver    : 1.0.5
+   author    : JNeuhoff and waterfall
+Could not resolve path for [edit/view/template/admin_theme/base5builder_impulsepro/common/header.tpl] (SKIPPED)
+----------------------------------------------------------------------
+
+

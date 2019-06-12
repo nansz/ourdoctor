@@ -1,0 +1,4 @@
+User-agent: *
+ 
+Host: www.mdclux.com.ua
+Sitemap: http://www.mdclux.com.ua/sitemap.xml

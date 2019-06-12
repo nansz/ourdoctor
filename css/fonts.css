@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Conv_SFUIDisplay-Regular';
+  src: url("../fonts/SFUIDisplay-Regular.eot");
+  src: local("☺"), url("../fonts/SFUIDisplay-Regular.woff") format("woff"), url("../fonts/SFUIDisplay-Regular.ttf") format("truetype"), url("../fonts/SFUIDisplay-Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Conv_SFUIDisplay-Bold';
+  src: url("../fonts/SFUIDisplay-Bold.eot");
+  src: local("☺"), url("../fonts/SFUIDisplay-Bold.woff") format("woff"), url("../fonts/SFUIDisplay-Bold.ttf") format("truetype"), url("../fonts/SFUIDisplay-Bold.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Conv_futuramediumc';
+  src: url("../fonts/futuramediumc.eot");
+  src: local("☺"), url("../fonts/futuramediumc.woff") format("woff"), url("../fonts/futuramediumc.ttf") format("truetype"), url("../fonts/futuramediumc.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }

@@ -1,0 +1,1515 @@
+<modification>
+	<id>Admin Theme - Base 5 Builder - ImpulsePro</id>
+	<version>0.9.4</version>
+	<vqmver>2.0</vqmver>
+	<author>Niyi Sodipe - Base5Builder.com</author>
+	<file name="edit/controller/common/login.php">
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			$this->language->load('common/login');
+			]]></search>
+			<add><![CDATA[
+			$this->language->load('common/footer');
+			$this->data['text_footer'] = sprintf($this->language->get('text_footer'), VERSION);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->template = 'common/login.tpl';
+			]]></search>
+			<add><![CDATA[
+			$this->template = 'admin_theme/base5builder_impulsepro/common/login.tpl';
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/controller/common/header.php">
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			$this->language->load('common/header');
+			]]></search>
+			<add><![CDATA[
+			$this->language->load('common/footer');
+			$this->data['text_footer'] = sprintf($this->language->get('text_footer'), VERSION);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->data['logged'] = sprintf($this->language->get('text_logged'), $this->user->getUserName());
+			]]></search>
+			<add><![CDATA[
+			$this->data['logged'] = sprintf($this->language->get('text_logged'), ": <img src='view/image/adm-user.png' /> " . $this->user->getUserName());
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->template = 'common/header.tpl';
+			]]></search>
+			<add><![CDATA[
+			$this->template = 'admin_theme/base5builder_impulsepro/common/header.tpl';
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/controller/common/footer.php">
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->template = 'common/footer.tpl';
+			]]></search>
+			<add><![CDATA[
+			$this->template = 'admin_theme/base5builder_impulsepro/common/footer.tpl';
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/controller/common/filemanager.php">
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->template = 'common/filemanager.tpl';
+			]]></search>
+			<add><![CDATA[
+			$this->template = 'admin_theme/base5builder_impulsepro/common/filemanager.tpl';
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/controller/common/home.php">
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->language->load('common/home');
+			]]></search>
+			<add><![CDATA[
+			$this->language->load('common/header');
+			$this->language->load('common/home');
+			$this->data['text_front'] = $this->language->get('text_front');
+			$this->data['text_logout'] = $this->language->get('text_logout');
+			$this->data['text_total_sales_previous_years'] = $this->language->get('text_total_sales_previous_years');
+			$this->data['text_other_stats'] = $this->language->get('text_other_stats');
+			
+			$this->data['text_total_review'] = $this->language->get('text_total_review');
+
+			$this->data['stores'] = array();
+			
+			$this->load->model('setting/store');
+			
+			$results = $this->model_setting_store->getStores();
+			
+			foreach ($results as $result) {
+				$this->data['stores'][] = array(
+					'name' => $result['name'],
+					'href' => $result['url']
+				);
+			}
+
+			$this->data['store'] = HTTP_CATALOG;
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			$this->data['total_sale_year'] = $this->currency->format($this->model_sale_order->getTotalSalesByYear(date('Y')), $this->config->get('config_currency'));
+			]]></search>
+			<add><![CDATA[
+			$this->data['total_sale_raw'] = $this->model_sale_order->getTotalSales();
+			$this->data['total_sale_year_raw'] = $this->model_sale_order->getTotalSalesByYear(date('Y'));
+			$this->data['total_sales_previous_years_raw'] = $this->data['total_sale_raw'] - $this->data['total_sale_year_raw'];
+			$this->data['total_sales_previous_years'] = $this->currency->format($this->data['total_sale_raw'] - $this->data['total_sale_year_raw'], $this->config->get('config_currency'));
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->template = 'common/home.tpl';
+			]]></search>
+			<add><![CDATA[
+			$this->template = 'admin_theme/base5builder_impulsepro/common/home.tpl';
+			]]></add>
+		</operation>
+	</file>
+	<!--
+		FOR MULTI-LANGUAGE STORES
+		Duplicate the "file" block below and replace "english" in the file path with the additional Language you use.
+		Then translate the fields as necessary.
+		Repeat for all your store languages
+
+		EG:
+		<file name="edit/language/ENGLISH/common/home.php">
+			// CONTENT
+		</file>
+
+		BECOMES
+
+		<file name="edit/language/RUSSIAN/common/home.php">
+			// CONTENT
+		</file>
+	-->
+	<file name="edit/language/english/common/home.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$_['text_customer']                 = 'Total Customers';
+			]]></search>
+			<add><![CDATA[
+			$_['text_total_sales_previous_years']                 = 'Previous Sales:';
+			$_['text_other_stats']                                = 'Other Stats';
+			$_['text_total_review']                               = 'No. of Reviews:';
+			]]></add>
+		</operation>
+	</file>
+	<!-- End FOR MULTI-LANGUAGE STORES -->
+	<file name="edit/view/template/tool/error_log.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<div class="buttons"><a href="<?php echo $clear; ?>" class="button"><?php echo $button_clear; ?></a></div>
+			]]></search>
+			<add><![CDATA[
+			<div class="buttons"><a href="<?php echo $clear; ?>" class="button delete"><?php echo $button_clear; ?></a></div>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/product_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#product-category div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#product-category div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#product-filter div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#product-filter div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#product-download div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#product-download div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#product-related div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#product-related div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			self._renderItem(ul, item);
+			]]></search>
+			<add><![CDATA[
+			self._renderItemData(ul, item);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/common/filemanager.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#column-right a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#column-right a').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#column-right a').live('dblclick', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#column-right a').on('dblclick', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/module/featured.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#featured-product div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#featured-product div img').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/order_info.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			data: 'order_status_id=' + encodeURIComponent($('select[name=\'order_status_id\']').val()) + '&notify=' + encodeURIComponent($('input[name=\'notify\']').attr('checked') ? 1 : 0) + '&append=' + encodeURIComponent($('input[name=\'append\']').attr('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
+			]]></search>
+			<add><![CDATA[
+			data: 'order_status_id=' + encodeURIComponent($('select[name=\'order_status_id\']').val()) + '&notify=' + encodeURIComponent($('input[name=\'notify\']').prop('checked') ? 1 : 0) + '&append=' + encodeURIComponent($('input[name=\'append\']').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/affiliate_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#transaction .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#transaction .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/contact.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			self._renderItem(ul, item);
+			]]></search>
+			<add><![CDATA[
+			self._renderItemData(ul, item);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#customer div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#customer div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#affiliate div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#affiliate div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#product div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#product div img').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/coupon_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#coupon-product div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#coupon-product div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#coupon-category div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#coupon-category div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#history .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#history .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/customer_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('select[name=\'customer_group_id\']').live('change', function() {
+			]]></search>
+			<add><![CDATA[
+			$('select[name=\'customer_group_id\']').on('change', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#history .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#history .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#transaction .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#transaction .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#reward .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#reward .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/order_info.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#invoice-generate').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#invoice-generate').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#credit-add').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#credit-add').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#credit-remove').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#credit-remove').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#reward-add').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#reward-add').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#reward-remove').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#reward-remove').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#commission-add').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#commission-add').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#commission-remove').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#commission-remove').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#history .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#history .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#button-history').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#button-history').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/return_info.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#history .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#history .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/voucher_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#history .pagination a').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#history .pagination a').on('click', function() {
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/order_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			self._renderItem(ul, item);
+			]]></search>
+			<add><![CDATA[
+			self._renderItemData(ul, item);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('select[id=\'customer_group_id\']').live('change', function() {
+			]]></search>
+			<add><![CDATA[
+			$('select[id=\'customer_group_id\']').on('change', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#button-product, #button-voucher, #button-update').live('click', function() {	
+			]]></search>
+			<add><![CDATA[
+			$('#button-product, #button-voucher, #button-update').on('click', function() {	
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/order_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			self._renderItem(ul, item);
+			]]></search>
+			<add><![CDATA[
+			self._renderItemData(ul, item);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_order_id = $('input[name=\'filter_order_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_order_id = $('input[name=\'filter_order_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_customer = $('input[name=\'filter_customer\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_customer = $('input[name=\'filter_customer\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_total = $('input[name=\'filter_total\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_total = $('input[name=\'filter_total\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_modified = $('input[name=\'filter_date_modified\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_modified = $('input[name=\'filter_date_modified\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/return_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			self._renderItem(ul, item);
+			]]></search>
+			<add><![CDATA[
+			self._renderItemData(ul, item);
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/return_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
+			]]></search>
+			<add><![CDATA[
+			<form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form" class="form-fix">
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			self._renderItem(ul, item);
+			]]></search>
+			<add><![CDATA[
+			self._renderItemData(ul, item);
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_return_id = $('input[name=\'filter_return_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_return_id = $('input[name=\'filter_return_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_order_id = $('input[name=\'filter_order_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_order_id = $('input[name=\'filter_order_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_customer = $('input[name=\'filter_customer\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_customer = $('input[name=\'filter_customer\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_quantity = $('input[name=\'filter_quantity\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_quantity = $('input[name=\'filter_quantity\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_return_status_id = $('select[name=\'filter_return_status_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_return_status_id = $('select[name=\'filter_return_status_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_modified = $('input[name=\'filter_date_modified\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_modified = $('input[name=\'filter_date_modified\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/shipping/weight.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<div class="content">
+			]]></search>
+			<add><![CDATA[
+			<div class="content margin-fix">
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/return_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<div class="content">
+			]]></search>
+			<add><![CDATA[
+			<div class="content margin-fix">
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/customer_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<form action="" method="post" enctype="multipart/form-data" id="form">
+			]]></search>
+			<add><![CDATA[
+			<form action="" method="post" enctype="multipart/form-data" id="form" class="form-fix">
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			<div class="content">
+			]]></search>
+			<add><![CDATA[
+			<div class="content sales-customer">
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_name = $('input[name=\'filter_name\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_name = $('input[name=\'filter_name\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_email = $('input[name=\'filter_email\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_email = $('input[name=\'filter_email\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_customer_group_id = $('select[name=\'filter_customer_group_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_customer_group_id = $('select[name=\'filter_customer_group_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_status = $('select[name=\'filter_status\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_status = $('select[name=\'filter_status\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_approved = $('select[name=\'filter_approved\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_approved = $('select[name=\'filter_approved\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_ip = $('input[name=\'filter_ip\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_ip = $('input[name=\'filter_ip\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/total/handling.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<td><?php echo $entry_tax; ?></td>
+			]]></search>
+			<add><![CDATA[
+			<td><?php echo $entry_tax_class; ?></td>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/total/low_order_fee.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<td><?php echo $entry_tax; ?></td>
+			]]></search>
+			<add><![CDATA[
+			<td><?php echo $entry_tax_class; ?></td>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/*">
+		<operation>
+			<search position="replace"><![CDATA[
+			<div class="content">
+			]]></search>
+			<add><![CDATA[
+			<div class="content sales-report">
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/sale_*">
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_group = $('select[name=\'filter_group\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_group = $('select[name=\'filter_group\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/product_purchased.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/customer_order.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_order_status_id = $('select[name=\'filter_order_status_id\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/customer_reward.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/affiliate_commission.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_start = $('input[name=\'filter_date_start\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_end = $('input[name=\'filter_date_end\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/sale_tax.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<?php echo $footer; ?> <?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+			<?php echo $footer; ?>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/sale_shipping.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<?php echo $footer; ?> <?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+			<?php echo $footer; ?>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/category_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/category.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-category-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/category_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			$('#category-filter div img').live('click', function() {
+			]]></search>
+			<add><![CDATA[
+			$('#category-filter div img').on('click', function() {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/product_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-products-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/attribute_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/order.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-attribute-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/attribute_form.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/information.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-attribute-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/attribute_group_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/order.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-attribute-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/option_*.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-options-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/option_form.tpl">
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/manufacturer_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-manufacturers-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/manufacturer_form.tpl">
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/download_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/download.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-downloads-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/review_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/review.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-reviews-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/catalog/information_*.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/information.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-information-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/extension/module.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/module.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-extensions-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/module/*">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/module.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-extensions-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/extension/shipping.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-shipping-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/shipping/*">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-shipping-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/extension/payment.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/payment.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-payment-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/payment/*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-payment-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/extension/total.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/total.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-totals-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/total/*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-totals-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/extension/feed.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/feed.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-universal-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/feed/*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-universal-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/order_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-sales-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/return_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-returns-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/customer_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-customers-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/affiliate_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-customers-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/affiliate_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_name = $('input[name=\'filter_name\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_name = $('input[name=\'filter_name\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_email = $('input[name=\'filter_email\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_email = $('input[name=\'filter_email\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_affiliate_group_id = $('select[name=\'filter_affiliate_group_id\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_affiliate_group_id = $('select[name=\'filter_affiliate_group_id\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_status = $('select[name=\'filter_status\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_status = $('select[name=\'filter_status\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_approved = $('select[name=\'filter_approved\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_approved = $('select[name=\'filter_approved\']').prop('value');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').attr('value');
+			]]></search>
+			<add><![CDATA[
+			var filter_date_added = $('input[name=\'filter_date_added\']').prop('value');
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/coupon_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-coupons-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/voucher_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-coupons-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/voucher_theme_form.tpl">
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/sale/contact.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-mail-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/setting/store_*.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-settings-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/setting/store_form.tpl">
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/setting/setting.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-settings-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="1"><![CDATA[
+			bgiframe: false,
+			]]></search>
+			<add><![CDATA[
+			draggable: false,
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			resizable: false,
+			]]></search>
+			<add><![CDATA[
+			resizable: true,
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/design/*.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-layout-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/user/*.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-users-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/language_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-globe-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/currency_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-payment-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/stock_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-attribute-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/order_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-attribute-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/return_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-returns-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/country_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-globe-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/zone_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-zone-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/geo_zone_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-zone-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/tax*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-totals-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/length_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-ruler-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/localisation/weight_*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-weight-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/error/*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-warning-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/tool/error_log.tpl">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-warning-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/tool/backup.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+			<h1><img src="view/image/backup.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+			<h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-backup-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+	<file name="edit/view/template/report/*">
+		<operation>
+			<search position="replace" offset="1"><![CDATA[
+			<div class="heading">
+			]]></search>
+			<add><![CDATA[
+			<div class="heading"><h1><img src="view/image/admin_theme/base5builder_impulsepro/icon-reports-large.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></add>
+		</operation>
+	</file>
+</modification>
